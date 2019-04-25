@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Saitama\'s Training</string>
+    
+    <string-array name="training_series">
+        <item>2</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+</resources>

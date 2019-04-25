@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/saitamaRed</color>
+    <color name="colorPrimaryDark">@color/saitamaDarkRed</color>
+    <color name="colorAccent">@color/saitamaDarkYellow</color>
+    
+    <color name="saitamaDarkRed">#662422</color>
+    <color name="saitamaRed">#9c3c37</color>
+    <color name="saitamaYellow">#e9bf5c</color>
+    <color name="saitamaDarkYellow">#aa8238</color>
+    <color name="saitamaLightBlue">#b5e3ea</color>
+</resources>
