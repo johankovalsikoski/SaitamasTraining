@@ -98,7 +98,7 @@ class TrainingActivity : AppCompatActivity() {
 
                 4 -> {
 
-                    time = ( (60000 * 6 ) * trainingModel.runningRequired).toLong()
+                    time = ( (60 * 6 ) * trainingModel.runningRequired).toLong()
 
                 }
             }
@@ -122,46 +122,48 @@ class TrainingActivity : AppCompatActivity() {
 
                     btn_start.isEnabled = true
 
-                    if (isLast){
+                    if (isLast) {
                         isOver = true
                         tv_exercise_message.text = "Go get some rest :)"
                         btn_start.text = "Save & Exit"
-                    }
-
-                    var run = false
-
-                    if(this@TrainingActivity.round == trainingModel.series && e == 3){
-                        run = true
-                    } else if(this@TrainingActivity.round != trainingModel.series && e == 3){
-                        btn_start.text = "Continue"
-                        exercise = 1
-                        this@TrainingActivity.round++
                     } else {
-                        btn_start.text = "Continue"
-                        exercise++
-                    }
 
-                    if(!run) {
-                        val eMessage = when (exercise) {
-                            1 -> "Push-ups"
-                            2 -> "Sit-ups"
-                            else -> "Squats"
+                        var run = false
+
+                        if (this@TrainingActivity.round == trainingModel.series && e == 3) {
+                            run = true
+                        } else if (this@TrainingActivity.round != trainingModel.series && e == 3) {
+                            btn_start.text = "Continue"
+                            exercise = 1
+                            this@TrainingActivity.round++
+                        } else {
+                            btn_start.text = "Continue"
+                            exercise++
                         }
 
-                        val qMessage = when (exercise) {
-                            1 -> trainingModel.pushupsRequired
-                            2 -> trainingModel.situpsRequired
-                            else -> trainingModel.squatsRequired
+                        if (!run) {
+                            val eMessage = when (exercise) {
+                                1 -> "Push-ups"
+                                2 -> "Sit-ups"
+                                else -> "Squats"
+                            }
+
+                            val qMessage = when (exercise) {
+                                1 -> trainingModel.pushupsRequired
+                                2 -> trainingModel.situpsRequired
+                                else -> trainingModel.squatsRequired
+                            }
+
+                            tv_exercise_message.text =
+                                "Do: $qMessage $eMessage \n serie: ${this@TrainingActivity.round}/${trainingModel.series}"
+
+                        } else if (run && !isLast) {
+                            tv_exercise_message.text = "Run ${trainingModel.runningRequired}km"
+                            exercise = 4
+                            isLast = true
                         }
 
-                        tv_exercise_message.text = "Do: $qMessage $eMessage \n serie: ${this@TrainingActivity.round}/${trainingModel.series}"
-
-                    } else if(run && !isLast){
-                        tv_exercise_message.text = "Run ${trainingModel.runningRequired}km"
-                        exercise = 4
-                        isLast = true
                     }
-
                 }
             }.start()
 
