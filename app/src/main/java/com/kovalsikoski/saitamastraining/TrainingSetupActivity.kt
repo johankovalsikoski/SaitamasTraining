@@ -47,7 +47,7 @@ class TrainingSetupActivity : AppCompatActivity() {
 
         btn_start.setOnClickListener {
 
-            val dateFormat = SimpleDateFormat.getDateInstance()
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy")
             trainingModel.date = dateFormat.format(Calendar.getInstance().time)
             trainingModel.series = series.progress
             trainingModel.pushupsRequired = pushups.progress

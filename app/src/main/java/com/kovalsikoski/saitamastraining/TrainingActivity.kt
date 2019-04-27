@@ -98,7 +98,7 @@ class TrainingActivity : AppCompatActivity() {
 
                 4 -> {
 
-                    time = ( (60 * 6 ) * trainingModel.runningRequired).toLong()
+                    time = ( (60000 * 6 ) * trainingModel.runningRequired).toLong()
 
                 }
             }
