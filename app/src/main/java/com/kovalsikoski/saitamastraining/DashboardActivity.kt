@@ -25,17 +25,19 @@ class DashboardActivity : AppCompatActivity() {
         val groupAdapter = GroupAdapter<ViewHolder>()
 
         all.forEach {
-            groupAdapter.add(TrainingAdapter(it, object: ClickListenerInterface{
+            groupAdapter.add(TrainingAdapter(it, object : ClickListenerInterface {
                 override fun delete(id: Int, position: Int) {
                     realm.beginTransaction()
-                    realm.where(TrainingModel::class.java).equalTo("id", id).findAll().deleteAllFromRealm()
+                    realm.where(TrainingModel::class.java).equalTo("id", id).findAll()
+                        .deleteAllFromRealm()
                     realm.commitTransaction()
 
                     groupAdapter.removeGroup(position)
                 }
 
                 override fun message() {
-                    Toast.makeText(this@DashboardActivity, "Hold to delete", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@DashboardActivity, "Hold to delete", Toast.LENGTH_LONG)
+                        .show()
                 }
             }))
         }
